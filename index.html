@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio | Génie Mécatronique et systèmes intelligents</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --beige: #f5eee3;
+            --beige-dark: #e8d9c5;
+            --brown: #674936;
+            --brown-dark: #38271e;
+            --brown-light: #a98161;
+            --white: #fffaf4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--beige);
+            color: var(--brown-dark);
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 238, 227, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(56,39,30,0.06);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--brown);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--brown-dark);
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--brown-light);
+        }
+
+        /* ACCUEIL */
+
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 130px 10% 70px;
+            gap: 50px;
+        }
+
+        .home-text {
+            max-width: 600px;
+            animation: slideLeft 1s ease;
+        }
+
+        .home-text h3 {
+            color: var(--brown-light);
+            font-size: 19px;
+            font-weight: 400;
+        }
+
+        .home-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 5vw, 65px);
+            margin: 15px 0;
+            color: var(--brown-dark);
+        }
+
+        .home-text h2 {
+            color: var(--brown);
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .home-text p {
+            line-height: 1.9;
+            font-size: 15px;
+            color: #766355;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--brown);
+            color: white;
+            padding: 13px 27px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .btn:hover {
+            background: var(--brown-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px #67493655;
+        }
+
+         .home-image {
+            width: 300px;
+            height: 420px;
+            flex-shrink: 0;
+            border-radius: 150px 150px 20px 20px;
+            overflow: hidden;
+            border: 8px solid var(--beige-dark);
+            box-shadow: 0 15px 40px #67493633;
+            animation: float 4s ease-in-out infinite;
+        }
+
+         .home-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: rotate(90deg) scale(1);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 38px;
+            color: var(--brown);
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: var(--brown-light);
+        }
+
+        .about {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 2;
+            color: #766355;
+        }
+
+        /* CARTES */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e7d7c5;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px #67493622;
+        }
+
+        .card .emoji {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: var(--brown);
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #806d5d;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* COMPETENCES */
+
+        .skills {
+            background: var(--white);
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .progress {
+            background: var(--beige-dark);
+            height: 10px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress span {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: var(--brown-light);
+            border-radius: 20px;
+            transition: width 1.5s ease;
+        }
+
+        /* FORMATION */
+
+        .timeline {
+            max-width: 750px;
+            margin: auto;
+            border-left: 3px solid var(--brown-light);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 28px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--brown);
+        }
+
+        .timeline-item h3 {
+            color: var(--brown);
+        }
+
+        .timeline-item p {
+            color: #806d5d;
+            margin-top: 8px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: var(--brown-dark);
+            color: var(--beige);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--beige);
+        }
+
+        .contact p {
+            margin-bottom: 25px;
+        }
+
+        .contact a {
+            color: var(--beige);
+            text-decoration: none;
+        }
+
+        .contact .btn {
+            background: var(--beige);
+            color: var(--brown-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #261a14;
+            color: var(--beige);
+            font-size: 13px;
+        }
+
+        /* ANIMATIONS */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: all 0.9s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 850px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 150px;
+            }
+
+            .home-image {
+                width: 240px;
+                height: 300px;
+            }
+
+            section {
+                padding: 75px 7%;
+            }
+        }
+        /* STYLE DES CERTIFICATS */
+
+.certificate-card {
+    text-align: center;
+}
+
+.certificate-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    background: #eee3d4;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: transform 0.4s;
+}
+
+.certificate-card img:hover {
+    transform: scale(1.05);
+}
+
+.certificate-card .btn {
+    margin-top: 20px;
+    font-size: 13px;
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Mon Portfolio.</div>
+
+    <nav>
+        <a href="#home">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
+        <a href="#skills">Compétences</a>
+        <a href="#education">Formation</a>
+        <a href="#certificates">Certificats</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- ACCUEIL -->
+
+<section class="home" id="home">
+
+    <div class="home-text">
+        <h3>Bienvenue sur mon portfolio</h3>
+
+        <h1>Bonjour, je suis <span>MARWA BEDDIAF</span></h1>
+
+        <h2>Étudiante en Génie Mécatronique et systèmes intelligents</h2>
+
+        <p>
+            Passionnée par la technologie, la mécanique,
+            l'électronique et l'automatisation.
+            Je m'intéresse à la conception et au développement
+            de solutions innovantes.
+        </p>
+
+        <a href="#projects" class="btn">Découvrir mes projets</a>
+    </div>
+
+    <div class="home-image">
+        <!-- Remplacer par votre photo -->
+        <img src="./images/photo.jpeg" alt="Ma photo personnelle">
+    </div>
+   
+
+</section>
+
+<!-- A PROPOS -->
+
+<section class="about reveal" id="about">
+
+    <h2 class="section-title">À propos de <span>moi</span></h2>
+
+    <p>
+        Je suis étudiante en génie mécatronique et systèmes intelligents.
+        Curieuse, motivée et passionnée par les nouvelles technologies,
+        je développe progressivement mes compétences dans les domaines
+        de la mécanique, de l'électronique, de l'informatique
+        et des systèmes automatisés.
+        Mon objectif est de participer à la création de solutions
+        technologiques intelligentes et innovantes.
+    </p>
+
+</section>
+
+<!-- PROJETS -->
+
+<section id="projects" class="reveal">
+
+    <h2 class="section-title">Mes <span>Projets</span></h2>
+
+    <div class="cards">
+
+        
+
+        <div class="card">
+            <div class="emoji">⚙️</div>
+            <h3>Projet Mécanique</h3>
+            <p>
+                Réalisation d'un projet de conception d'une pompe sur Catia
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">💻</div>
+            <h3>Projet Informatique</h3>
+            <p>
+                Jardin de A à Z: permet aux utilisateurs d'optimiser leurs jardins , fermes ou toutes zonne 
+                agriculture, es se basant sula zone , les conditions... 
+            </p>
+        </div>
+        <div class="card">
+            <div class="emoji">⚙️</div>
+            <h3>Projet Mécanique</h3>
+            <p>
+                Dans le cadre de la premiere édition du hackathon Water4Future , j'ai participé au developpement de notre solution 
+                d'irrigation  souterraine et automatiques des zonnes agricultures, avec un suivi direct à l'aide d'une application mobile. 
+            </p>
+        </div>
+        <div class="card">
+            <div class="emoji">⚙️</div>
+            <h3>Projet Injaz Al Maghrib</h3>
+            <p>
+                Réalisation d'un détecteur des gazs toxiques avec suivi sur une application
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- COMPETENCES -->
+
+<section class="skills reveal" id="skills">
+
+    <h2 class="section-title">Mes <span>Compétences</span></h2>
+
+    <div class="skill">
+        <div class="skill-info">
+            <span>Programmation C/C++</span>
+            <span>À compléter</span>
+        </div>
+        <div class="progress">
+            <span data-width="50%"></span>
+        </div>
+    </div>
+    <div class="skill">
+        <div class="skill-info">
+            <span>Programmation Python</span>
+            <span>À compléter</span>
+        </div>
+        <div class="progress">
+            <span data-width="70%"></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <span>Électronique</span>
+            <span>À compléter</span>
+        </div>
+        <div class="progress">
+            <span data-width="75%"></span>
+        </div>
+    </div>
+
+    <div class="skill">
+        <div class="skill-info">
+            <span>Mécanique et conception</span>
+            <span>À compléter</span>
+        </div>
+        <div class="progress">
+            <span data-width="70%"></span>
+        </div>
+    </div>
+
+
+    </div>
+
+</section>
+
+<!-- FORMATION -->
+
+<section id="education" class="reveal">
+
+    <h2 class="section-title">Ma <span>Formation</span></h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>Diplôme / Formation actuelle</h3>
+            <p>Génie Mécatronique</p>
+            <p>ENSA SAFI – 3eme annee</p>
+        </div>
+
+    
+
+    </div>
+
+</section>
+
+<!-- CERTIFICATS -->
+
+<
+<section class="certificates reveal" id="certificates">
+
+    <h2 class="section-title">
+        Mes <span>Certificats</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card certificate-card">
+            <img src="certificats/certif injaz.jpeg"
+                 alt="Certificat de participation">
+
+            <h3>Certificat de participation</h3>
+            <p>Compétition Injaz</p>
+            <p>Organisme : Injaz Al Maghrib</p>
+            <p>Année : 2025-2026</p>
+
+            <a href="certificats/certif injaz.jpeg"
+               target="_blank" class="btn">
+                Voir le certificat
+            </a>
+        </div>
+
+        <div class="card certificate-card">
+            <img src="certificats/certif hackathon.jpeg"
+                 alt="Certificat de participation">
+
+            <h3>Participation à la première édition du hackathon Water4Future </h3>
+            <p>Hackathon Water4Future</p>
+            <p>Organisme :Université Cadi Ayyad,MAROC & Centre Internnational UNESCO ICIREWARD</p>
+            <p>Année : 2025</p>
+
+            <a href="certificats/certif hackathon.jpeg"
+               target="_blank" class="btn">
+                Voir le certificat
+            </a>
+        </div>
+        <div class="card certificate-card">
+            <img src="certificats/GGU certif.jpeg"
+                 alt="Certificat de participation">
+
+            <h3>Participation au programme international  de Leadership Girls Gearing Up Academy en Allemagne  </h3>
+            <p>programme international  de Leadership Girls Gearing Up Academy en Allemagne</p>
+            <p>Organisme : Girls Gearing Up Academy</p>
+            <p>Année : 2023</p>
+
+            <a href="certificats/GGU certif.jpeg"
+               target="_blank" class="btn">
+                Voir le certificat
+            </a>
+        </div>
+
+    </div>
+    
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact reveal" id="contact">
+
+    <h2 class="section-title">Me <span>contacter</span></h2>
+
+    <p>Vous souhaitez échanger avec moi ou collaborer sur un projet ?</p>
+
+    <p>📧 Email : beddiaf.marwa24@gmail.com</p>
+
+    <p>
+        🔗 LinkedIn :
+        <a href="https://www.linkedin.com/in/marwa-beddiaf" target="_blank">
+            Mon profil LinkedIn
+        </a>
+    </p>
+
+    <br>
+
+    <a href="mailto:beddiaf.marwa24@gmail.com" class="btn">
+        Envoyer un message
+    </a>
+
+</section>
+
+<footer>
+    © 2026 - Mon Portfolio Personnel | Génie Mécatronique
+</footer>
+
+<script>
+
+    // Animation des sections au défilement
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("active");
+
+                // Animation des barres de compétences
+                entry.target.querySelectorAll(".progress span")
+                    .forEach(bar => {
+                        bar.style.width = bar.dataset.width;
+                    });
+
+            }
+
+        });
+
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal").forEach(section => {
+        observer.observe(section);
+    });
+
+</script>
+
+</body>
+</html>
